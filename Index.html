@@ -1,0 +1,1347 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neslin & Amal | Wedding Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --gold: #c39449;
+    --light-gold: #e7d2a4;
+    --ivory: #fffdf8;
+    --cream: #f5eee1;
+    --brown: #634b40;
+    --serif: 'Cormorant Garamond', serif;
+    --script: 'Great Vibes', cursive;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--ivory);
+    color: var(--brown);
+    font-family: var(--serif);
+    overflow-x: hidden;
+}
+
+/* =========================
+   1. LANDING PAGE
+========================= */
+
+#landing {
+    height: 100vh;
+    min-height: 650px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+
+    background:
+        linear-gradient(rgba(20,25,15,.48),
+                        rgba(20,25,15,.53)),
+        url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2000&q=85");
+
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.landing-border {
+    position: absolute;
+    inset: 15px;
+    border: 1px solid rgba(235,205,145,.8);
+    pointer-events: none;
+}
+
+.landing-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 20px;
+    animation: appear 1.5s ease;
+}
+
+.small-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.couple-heading {
+    font-family: var(--script);
+    font-size: clamp(60px, 10vw, 105px);
+    font-weight: normal;
+    margin: 12px 0 25px;
+    text-shadow: 0 3px 20px #0005;
+}
+
+/* =========================
+   2. ENVELOPE
+========================= */
+
+.envelope-container {
+    width: min(370px, 82vw);
+    height: 260px;
+    margin: 0 auto;
+    perspective: 1200px;
+    position: relative;
+}
+
+.envelope {
+    width: 100%;
+    height: 210px;
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(145deg,#fffdf7,#e9dfcc);
+    border: 1px solid #dfcba9;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 20px 40px #0005;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+}
+
+.envelope::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(145deg,transparent 49.5%,#d6c4a6 50%,transparent 50.7%),
+        linear-gradient(35deg,transparent 49.5%,#d6c4a6 50%,transparent 50.7%);
+}
+
+.envelope-flap {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg,#fffaf0,#e7dbc5);
+    clip-path: polygon(0 0,50% 58%,100% 0);
+    transform-origin: top;
+    transition: transform 1s;
+    z-index: 4;
+    border-top: 1px solid #d4c19d;
+}
+
+.letter {
+    position: absolute;
+    width: 84%;
+    height: 170px;
+    left: 8%;
+    top: 5px;
+    background: #fffefa;
+    color: var(--gold);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: transform 1s .3s;
+    z-index: 2;
+    box-shadow: 0 0 15px #0001;
+}
+
+.monogram {
+    font-family: var(--script);
+    font-size: 75px;
+}
+
+.letter-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+}
+
+.seal {
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%,#f6e3b4,#b77e30);
+    border: 2px solid #f4e3bd;
+    display: grid;
+    place-items: center;
+    color: white;
+    font-family: var(--script);
+    font-size: 30px;
+    transition: .4s;
+}
+
+.envelope.open .envelope-flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.envelope.open .letter {
+    transform: translateY(-120px);
+}
+
+.envelope.open .seal {
+    opacity: 0;
+    transform: translate(-50%,20px);
+}
+
+.tap-text {
+    margin-top: 25px;
+    font-family: 'Playfair Display', serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    50% { opacity: .4; }
+}
+
+.opening-subtitle {
+    margin-top: 15px;
+    font-size: 18px;
+    font-style: italic;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================
+   3. INVITATION REVEAL
+========================= */
+
+#invitation {
+    display: none;
+    text-align: center;
+    padding: 100px 20px;
+    background:
+        radial-gradient(ellipse at center,#fff 20%,#f8f1e5 100%);
+}
+
+#invitation.show {
+    display: block;
+    animation: appear 1.5s ease;
+}
+
+.bismillah {
+    font-size: 32px;
+    color: #211d19;
+    margin-bottom: 25px;
+}
+
+.invite-intro {
+    font-size: 24px;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.family-name {
+    font-size: 27px;
+    color: var(--gold);
+    font-style: italic;
+    margin: 10px 0;
+}
+
+.address {
+    font-size: 20px;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+.invite-message {
+    max-width: 700px;
+    margin: 30px auto 15px;
+    font-size: 24px;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+.large-name {
+    font-family: var(--script);
+    font-size: clamp(65px, 11vw, 110px);
+    color: var(--gold);
+    margin: 10px 0;
+    font-weight: normal;
+}
+
+.with-text {
+    font-size: 30px;
+    font-style: italic;
+}
+
+.golden-button {
+    background: linear-gradient(120deg,#d7b36e,#a97832);
+    color: white;
+    border: none;
+    padding: 16px 30px;
+    margin-top: 35px;
+    font-family: 'Playfair Display',serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: .4s;
+    box-shadow: 0 8px 25px #aa803b35;
+}
+
+.golden-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px #aa803b55;
+}
+
+/* =========================
+   4. GOLDEN DOORS
+========================= */
+
+#doors {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: #302317;
+    perspective: 1400px;
+}
+
+#doors.show {
+    display: block;
+}
+
+.door {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #95621f 0px,
+            #d6ad61 6px,
+            #f0d69b 12px,
+            #9a672a 18px
+        );
+    border: 10px double #f3dba4;
+    transition: transform 1.8s cubic-bezier(.7,0,.2,1);
+}
+
+.door::before {
+    content: "✧";
+    position: absolute;
+    top: 50%;
+    font-size: 100px;
+    color: #fff0c5;
+    transform: translateY(-50%);
+}
+
+.left-door {
+    left: 0;
+    transform-origin: left;
+}
+
+.right-door {
+    right: 0;
+    transform-origin: right;
+}
+
+.left-door::before {
+    right: 20%;
+}
+
+.right-door::before {
+    left: 20%;
+}
+
+#doors.open .left-door {
+    transform: rotateY(-110deg);
+}
+
+#doors.open .right-door {
+    transform: rotateY(110deg);
+}
+
+.door-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: white;
+    z-index: 2;
+    font-size: 27px;
+    font-style: italic;
+    white-space: nowrap;
+    transition: opacity .5s;
+}
+
+#doors.open .door-message {
+    opacity: 0;
+}
+
+/* =========================
+   5. MAIN WEBSITE
+========================= */
+
+#website {
+    display: none;
+}
+
+#website.show {
+    display: block;
+}
+
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0;
+    background: linear-gradient(90deg,#a6752c,#f1d89f);
+    z-index: 200;
+}
+
+.navbar {
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+    display: flex;
+    gap: 25px;
+    padding: 13px 25px;
+    background: #fffdf0e8;
+    backdrop-filter: blur(12px);
+    border: 1px solid #d8bd82;
+    border-radius: 40px;
+    box-shadow: 0 5px 20px #0001;
+    width: max-content;
+    max-width: 96%;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #72583c;
+    font-family: 'Playfair Display',serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.section {
+    min-height: 75vh;
+    padding: 120px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.section:nth-child(even) {
+    background: linear-gradient(140deg,#f6eee0,#fffefa);
+}
+
+.section:nth-child(odd) {
+    background: #fffdf8;
+}
+
+.section-inner {
+    max-width: 950px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.section-label {
+    font-family: 'Playfair Display',serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-family: var(--script);
+    font-size: clamp(55px,8vw,85px);
+    color: var(--gold);
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.section-text {
+    font-size: 23px;
+    line-height: 1.7;
+    font-style: italic;
+}
+
+.ornament {
+    color: var(--gold);
+    font-size: 23px;
+    margin: 20px;
+}
+
+/* Scroll reveal */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(50px) scale(.97);
+    transition: opacity 1s, transform 1s;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* =========================
+   6. FAMILY CARDS
+========================= */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 25px;
+    max-width: 850px;
+    margin: 40px auto;
+}
+
+.card {
+    padding: 35px 25px;
+    background: linear-gradient(145deg,#fffefa,#f6eddf);
+    border: 1px solid #d8bd82;
+    outline: 1px solid #d8bd8244;
+    outline-offset: 5px;
+    box-shadow: 0 15px 35px #9a743014;
+    transition: .5s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 45px #9a743033;
+}
+
+.card-icon {
+    color: var(--gold);
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-family: var(--script);
+    font-size: 45px;
+    font-weight: normal;
+    color: var(--gold);
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 19px;
+    line-height: 1.6;
+}
+
+/* =========================
+   7. COUNTDOWN
+========================= */
+
+.date-number {
+    font-family: 'Playfair Display',serif;
+    font-size: clamp(90px,15vw,150px);
+    color: var(--gold);
+    line-height: 1;
+}
+
+.date-month {
+    font-size: 26px;
+    letter-spacing: 5px;
+    margin: 10px;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 40px 0;
+}
+
+.time-box {
+    background: #fffdf8;
+    border: 1px solid #d8bd82;
+    min-width: 105px;
+    padding: 20px 12px;
+    box-shadow: 0 8px 20px #9a743015;
+}
+
+.time-box strong {
+    display: block;
+    color: var(--gold);
+    font-size: 42px;
+    font-weight: normal;
+}
+
+.time-box span {
+    font-family: 'Playfair Display',serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+/* =========================
+   8. VENUE
+========================= */
+
+.venue-card {
+    max-width: 600px;
+    margin: 35px auto;
+    padding: 45px 25px;
+    background: #fffefa;
+    border: 1px solid var(--gold);
+    box-shadow: 0 15px 40px #9a74301a;
+}
+
+.location-icon {
+    font-size: 40px;
+    color: #8a9a6a;
+    margin-bottom: 15px;
+}
+
+.map-button {
+    display: inline-block;
+    text-decoration: none;
+    background: linear-gradient(120deg,#d7b36e,#a97832);
+    color: white;
+    padding: 15px 25px;
+    margin-top: 25px;
+    font-family: 'Playfair Display',serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+/* =========================
+   9. FOOTER
+========================= */
+
+footer {
+    text-align: center;
+    padding: 65px 20px;
+    background: #493a30;
+    color: #fff4df;
+}
+
+.footer-names {
+    font-family: var(--script);
+    font-size: 65px;
+    color: #e8ca8e;
+}
+
+footer p {
+    font-size: 18px;
+    font-style: italic;
+    margin-top: 12px;
+}
+
+/* =========================
+   10. FLOATING SPARKLES
+========================= */
+
+.sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #f0d08c;
+    border-radius: 50%;
+    box-shadow: 0 0 12px 3px #e6c47d88;
+    animation: twinkle 3s infinite;
+    pointer-events: none;
+}
+
+@keyframes twinkle {
+    0%,100% { opacity: .15; transform: scale(.5); }
+    50% { opacity: 1; transform: scale(1.5); }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:650px) {
+    .navbar {
+        gap: 12px;
+        padding: 12px;
+    }
+
+    .navbar a {
+        font-size: 8px;
+        letter-spacing: .5px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 90px 18px;
+    }
+
+    .section-text {
+        font-size: 20px;
+    }
+
+    .time-box {
+        min-width: 75px;
+    }
+
+    .time-box strong {
+        font-size: 32px;
+    }
+
+    .bismillah {
+        font-size: 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =================================
+     LANDING PAGE
+================================== -->
+
+<div id="landing">
+
+    <div class="landing-border"></div>
+
+    <div class="landing-content">
+
+        <div class="small-heading">
+            You've got a wedding invitation from
+        </div>
+
+        <h1 class="couple-heading">
+            Neslin & Amal
+        </h1>
+
+        <div class="envelope-container">
+
+            <button class="envelope" id="envelope"
+                    aria-label="Open wedding invitation">
+
+                <div class="letter">
+                    <div class="monogram">N & A</div>
+                    <div class="letter-text">
+                        TOGETHER WITH THEIR FAMILIES
+                    </div>
+                </div>
+
+                <div class="envelope-flap"></div>
+
+                <div class="seal">N&A</div>
+
+            </button>
+
+        </div>
+
+        <div class="tap-text" id="tapText">
+            TAP ENVELOPE TO OPEN
+        </div>
+
+        <div class="opening-subtitle">
+            A celebration of love, faith & family
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =================================
+     INVITATION
+================================== -->
+
+<section id="invitation">
+
+    <div class="ornament">✦ ❧ ✦</div>
+
+    <div class="bismillah">
+        بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+    </div>
+
+    <p class="invite-intro">
+        With the blessings of Almighty Allah
+    </p>
+
+    <h3 class="family-name">
+        Mr. Junaid A.P & Mrs. Sajitha Junaid
+    </h3>
+
+    <p class="address">
+        Ayath House, Erumathala P.O., Aluva
+    </p>
+
+    <p class="invite-message">
+        Cordially invite your esteemed presence and prayers
+        on the auspicious occasion of the Nikkah ceremony
+        of their daughter
+    </p>
+
+    <h1 class="large-name">Neslin Junaid</h1>
+
+    <p class="address">
+        (Grand D/o Late A.K Pareed Haji & Late Amina<br>
+        and Mr. K.A Mammu & Mrs. Hafsath Mammu)
+    </p>
+
+    <div class="with-text">with</div>
+
+    <h1 class="large-name">Amal Karim</h1>
+
+    <h3 class="family-name">
+        S/o Mr. Abdul Jaleel & Mrs. Mumina
+    </h3>
+
+    <p class="address">
+        Kariyampilly House, Manjaly, North Paravur
+    </p>
+
+    <p class="invite-intro" style="margin-top:30px">
+        Insha Allah · Nikkah : 11:30 AM
+    </p>
+
+    <button class="golden-button" id="enterDoors">
+        ENTER THE CELEBRATION ✧
+    </button>
+
+</section>
+
+
+<!-- =================================
+     GOLDEN DOORS
+================================== -->
+
+<div id="doors">
+
+    <div class="door left-door"></div>
+    <div class="door right-door"></div>
+
+    <div class="door-message">
+        A beautiful beginning awaits...
+    </div>
+
+</div>
+
+
+<!-- =================================
+     MAIN WEBSITE
+================================== -->
+
+<div id="website">
+
+    <div class="progress-bar" id="progress"></div>
+
+    <nav class="navbar">
+        <a href="#story">Invitation</a>
+        <a href="#families">Families</a>
+        <a href="#date">The Day</a>
+        <a href="#venue">Venue</a>
+    </nav>
+
+
+    <!-- STORY -->
+
+    <section class="section" id="story">
+
+        <div class="section-inner reveal">
+
+            <div class="section-label">
+                Bismillah
+            </div>
+
+            <h2 class="section-title">
+                A day to remember
+            </h2>
+
+            <p class="section-text">
+                With the blessings of Almighty Allah,
+                our families request the honour of your
+                presence and prayers as we celebrate
+                the Nikah of
+            </p>
+
+            <div class="ornament">✧ ❧ ✧</div>
+
+            <h1 class="large-name">
+                Neslin & Amal
+            </h1>
+
+            <p class="section-text">
+                May this new chapter begin with faith,
+                grow with patience and be filled with
+                love and barakah.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FAMILIES -->
+
+    <section class="section" id="families">
+
+        <div class="section-inner reveal">
+
+            <div class="section-label">
+                Two families · One beautiful occasion
+            </div>
+
+            <h2 class="section-title">
+                With the love of our families
+            </h2>
+
+            <div class="cards">
+
+                <div class="card">
+                    <div class="card-icon">❧</div>
+
+                    <h3>The Bride</h3>
+
+                    <p>
+                        <strong>Neslin Junaid</strong><br><br>
+
+                        Granddaughter of<br>
+                        Late A.K Pareed Haji & Late Amina<br><br>
+
+                        Mr. K.A Mammu & Mrs. Hafsath Mammu
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">❧</div>
+
+                    <h3>The Groom</h3>
+
+                    <p>
+                        <strong>Amal Karim</strong><br><br>
+
+                        Son of<br>
+                        Mr. Abdul Jaleel & Mrs. Mumina
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="ornament">✧ ❧ ✧</div>
+
+            <p class="section-text">
+                Hosted with love by
+            </p>
+
+            <h3 class="family-name">
+                Mr. Junaid A.P & Mrs. Sajitha Junaid
+            </h3>
+
+            <p class="address">
+                Ayath House, Erumathala P.O., Aluva
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- DATE -->
+
+    <section class="section" id="date">
+
+        <div class="section-inner reveal">
+
+            <div class="section-label">
+                Save the date
+            </div>
+
+            <h2 class="section-title">
+                The Nikah Day
+            </h2>
+
+            <div class="date-month">SUNDAY</div>
+
+            <div class="date-number">03</div>
+
+            <div class="date-month">JANUARY 2027</div>
+
+            <p class="section-text">
+                25 Rajab 1448 AH · Insha Allah
+            </p>
+
+            <div class="ornament">✧ ❧ ✧</div>
+
+            <p class="section-text">
+                The celebration begins in
+            </p>
+
+            <div class="countdown">
+
+                <div class="time-box">
+                    <strong id="days">00</strong>
+                    <span>DAYS</span>
+                </div>
+
+                <div class="time-box">
+                    <strong id="hours">00</strong>
+                    <span>HOURS</span>
+                </div>
+
+                <div class="time-box">
+                    <strong id="minutes">00</strong>
+                    <span>MINUTES</span>
+                </div>
+
+                <div class="time-box">
+                    <strong id="seconds">00</strong>
+                    <span>SECONDS</span>
+                </div>
+
+            </div>
+
+            <p class="section-text">
+                Nikkah Ceremony · 11:30 AM
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- VENUE -->
+
+    <section class="section" id="venue">
+
+        <div class="section-inner reveal">
+
+            <div class="section-label">
+                We would love to see you there
+            </div>
+
+            <h2 class="section-title">
+                The Venue
+            </h2>
+
+            <div class="venue-card">
+
+                <div class="location-icon">⌖</div>
+
+                <h2 class="family-name">
+                    Highness Auditorium
+                </h2>
+
+                <p class="section-text">
+                    Pukkattupady
+                </p>
+
+                <div class="ornament">✧</div>
+
+                <p class="address">
+                    Sunday, 03 January 2027<br>
+                    11:30 AM
+                </p>
+
+                <a
+                  class="map-button"
+                  href="https://www.google.com/maps/search/?api=1&query=Highness+Auditorium+Pukkattupady"
+                  target="_blank"
+                  rel="noopener">
+                    GET DIRECTIONS ↗
+                </a>
+
+            </div>
+
+            <p class="section-text">
+                We look forward to celebrating this
+                blessed occasion with you.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- BLESSINGS -->
+
+    <section class="section" id="blessings">
+
+        <div class="section-inner reveal">
+
+            <div class="ornament">✧ ❧ ✧</div>
+
+            <h2 class="section-title">
+                A Prayer for the Journey Ahead
+            </h2>
+
+            <p class="section-text">
+                May Allah bless this union with
+                tranquillity, mercy and endless barakah.
+
+                May He make their home a place
+                of love, kindness and faith.
+            </p>
+
+            <div class="ornament">✧ ❧ ✧</div>
+
+            <p class="section-text">
+                Best Compliments : Adil Junaid<br>
+                Mob : 7012128863, 8078067144
+            </p>
+
+            <h1 class="large-name">
+                Neslin & Amal
+            </h1>
+
+            <p class="section-text">
+                Your presence and prayers are our
+                greatest gift.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-names">
+            Neslin & Amal
+        </div>
+
+        <p>
+            With love, faith & gratitude
+        </p>
+
+        <p>
+            03 January 2027
+        </p>
+
+        <div class="ornament">
+            ✧ ❧ ✧
+        </div>
+
+    </footer>
+
+</div>
+
+
+<!-- =================================
+     JAVASCRIPT
+================================== -->
+
+<script>
+
+// 1. ENVELOPE OPENING
+
+const envelope = document.getElementById("envelope");
+const invitation = document.getElementById("invitation");
+
+let isOpened = false;
+
+envelope.addEventListener("click", function() {
+
+    if (isOpened) return;
+
+    isOpened = true;
+
+    envelope.classList.add("open");
+
+    document.getElementById("tapText").innerText =
+        "YOUR INVITATION AWAITS";
+
+    setTimeout(function() {
+
+        invitation.classList.add("show");
+
+        invitation.scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }, 1000);
+
+});
+
+
+// 2. GOLDEN DOORS OPENING
+
+const enterDoors = document.getElementById("enterDoors");
+const doors = document.getElementById("doors");
+const website = document.getElementById("website");
+
+enterDoors.addEventListener("click", function() {
+
+    doors.classList.add("show");
+
+    document.body.style.overflow = "hidden";
+
+    requestAnimationFrame(function() {
+
+        requestAnimationFrame(function() {
+            doors.classList.add("open");
+        });
+
+    });
+
+    setTimeout(function() {
+
+        doors.classList.remove("show", "open");
+
+        website.classList.add("show");
+
+        document.body.style.overflow = "";
+
+        document.getElementById("story").scrollIntoView({
+            behavior: "instant"
+        });
+
+    }, 2200);
+
+});
+
+
+// 3. SCROLL REVEAL ANIMATIONS
+
+const observer = new IntersectionObserver(
+    function(entries) {
+
+        entries.forEach(function(entry) {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add("visible");
+
+                observer.unobserve(entry.target);
+
+            }
+
+        });
+
+    },
+    {
+        threshold: 0.15
+    }
+);
+
+document.querySelectorAll(".reveal").forEach(function(element) {
+
+    observer.observe(element);
+
+});
+
+
+// 4. WEDDING COUNTDOWN
+
+function updateCountdown() {
+
+    // 3 January 2027, 11:30 AM IST
+
+    const weddingDate =
+        new Date("2027-01-03T11:30:00+05:30").getTime();
+
+    const now = Date.now();
+
+    let difference = weddingDate - now;
+
+    if (difference < 0) {
+        difference = 0;
+    }
+
+    const days = Math.floor(
+        difference / (1000 * 60 * 60 * 24)
+    );
+
+    const hours = Math.floor(
+        (difference / (1000 * 60 * 60)) % 24
+    );
+
+    const minutes = Math.floor(
+        (difference / (1000 * 60)) % 60
+    );
+
+    const seconds = Math.floor(
+        (difference / 1000) % 60
+    );
+
+    document.getElementById("days").innerText = days;
+
+    document.getElementById("hours").innerText =
+        String(hours).padStart(2, "0");
+
+    document.getElementById("minutes").innerText =
+        String(minutes).padStart(2, "0");
+
+    document.getElementById("seconds").innerText =
+        String(seconds).padStart(2, "0");
+
+}
+
+updateCountdown();
+
+setInterval(updateCountdown, 1000);
+
+
+// 5. SCROLL PROGRESS BAR
+
+window.addEventListener("scroll", function() {
+
+    const totalHeight =
+        document.documentElement.scrollHeight -
+        window.innerHeight;
+
+    const progress =
+        totalHeight > 0
+        ? (window.scrollY / totalHeight) * 100
+        : 0;
+
+    document.getElementById("progress").style.width =
+        progress + "%";
+
+});
+
+
+// 6. GOLDEN SPARKLES ON LANDING PAGE
+
+const landing = document.getElementById("landing");
+
+for (let i = 0; i < 25; i++) {
+
+    const sparkle = document.createElement("span");
+
+    sparkle.classList.add("sparkle");
+
+    sparkle.style.left = Math.random() * 100 + "%";
+
+    sparkle.style.top = Math.random() * 100 + "%";
+
+    sparkle.style.animationDelay =
+        Math.random() * 3 + "s";
+
+    sparkle.style.animationDuration =
+        (2 + Math.random() * 3) + "s";
+
+    landing.appendChild(sparkle);
+
+}
+
+</script>
+
+</body>
+</html>
