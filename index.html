@@ -6,6 +6,23 @@
 <title>Neslin &amp; Amal | Wedding Invitation</title>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Great+Vibes&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  .music-btn {
+  position: fixed;
+  bottom: 22px;
+  right: 20px;
+  z-index: 300;
+  background: linear-gradient(120deg, #e0bd76, #a97832);
+  color: white;
+  border: 1px solid #f4dfa4;
+  padding: 12px 18px;
+  border-radius: 30px;
+  font-family: var(--display);
+  font-size: 11px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(120, 80, 20, .25);
+  display: none;
+}
 :root{--gold:#b98a3e;--ivory:#fffdf8;--brown:#5e4636;--serif:'Cormorant Garamond',Georgia,serif;--script:'Great Vibes',cursive;--display:'Playfair Display',Georgia,serif;
 --gg:linear-gradient(110deg,#8f6320 0%,#e8c776 25%,#a97a2c 50%,#f4dfa4 75%,#9a6b23 100%)}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -284,8 +301,11 @@ footer .ornament{color:#e8ca8e}
     <div class="ornament">✧ ❧ ✧</div>
   </footer>
 </div>
-
+<audio id="weddingSong" loop preload="auto">
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
 <script>
+
 (function(){
 var $=function(id){return document.getElementById(id)};
 var landing=$("landing"),env=$("envelope"),website=$("website"),doors=$("doors");
@@ -301,6 +321,16 @@ env.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.pr
 var entering=false;
 $("enterDoors").addEventListener("click",function(){
   if(entering)return;entering=true;
+    var song = $("weddingSong");
+  var musicBtn = $("musicBtn");
+
+  song.volume = 0.4;
+  song.play().then(function() {
+    musicBtn.style.display = "block";
+  }).catch(function(error) {
+    musicBtn.style.display = "block";
+    musicBtn.textContent = "♫ Play Music";
+  });
   doors.classList.add("show");document.body.style.overflow="hidden";
   setTimeout(function(){
     landing.style.display="none";website.classList.add("show");window.scrollTo(0,0);
@@ -317,7 +347,19 @@ function reveal(){
   document.querySelectorAll(".pop").forEach(function(c){
     c.querySelectorAll(".pop-item").forEach(function(it,i){it.style.setProperty("--i",i)});io.observe(c)});
 }
+$("musicBtn").addEventListener("click", function() {
+  var song = $("weddingSong");
+  var btn = $("musicBtn");
 
+  if (song.paused) {
+    song.play().then(function() {
+      btn.textContent = "♫ Pause Music";
+    }).catch(function() {});
+  } else {
+    song.pause();
+    btn.textContent = "♫ Play Music";
+  }
+});
 // Countdown
 function tickCd(){
   var d=Math.max(0,new Date("2027-01-03T11:30:00+05:30").getTime()-Date.now());
@@ -404,6 +446,6 @@ addEventListener("scroll",function(){
   $("progress").style.width=(t>0?scrollY/t*100:0)+"%";
 },{passive:true});
 })();
-</script>
+</script> <button id="musicBtn" class="music-btn">♫ Pause Music</button>
 </body>
 </html>
